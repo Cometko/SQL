@@ -4,7 +4,7 @@ WITH base AS(
         Department,
         Employee,
         Salary,
-        RANK() OVER (PARTITION BY Department ORDER BY Salary DESC) AS r
+        DENSE_RANK() OVER (PARTITION BY Department ORDER BY Salary DESC) AS r
     FROM (
         SELECT
             d.name AS Department,
@@ -23,6 +23,3 @@ SELECT
     Salary 
 FROM base
 WHERE r = 1;
-
-
-
